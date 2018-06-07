@@ -1,0 +1,3 @@
+[submodule "git-cinnabar"]
+	path = git-cinnabar
+	url = https://github.com/glandium/git-cinnabar.git
