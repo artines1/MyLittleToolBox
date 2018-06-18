@@ -7,12 +7,6 @@ echo "Setup the username and email ..."
 git config --global user.name "$GIT_USER_NAME"
 git config --global user.email "$GIT_EMAIL"
 
-echo "Install the requests module for git cinnabar..."
-pip install requests
-
-echo "Download the git cinnabar helper ..."
-git cinnabar download
-
 echo "Setup diff-so-fancy ..."
 git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
 git config --global color.ui true

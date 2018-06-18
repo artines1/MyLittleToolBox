@@ -9,3 +9,5 @@ echo "Starting setting bash environment ..."
 echo "Starting setting git environment ..."
 ./setting_git.sh
 
+echo "Setup gecko-dev"
+./setup_gecko.sh
