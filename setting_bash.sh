@@ -44,6 +44,8 @@ printf "%s\n" "if [ -f `brew --prefix`/etc/bash_completion ]; then" "  . `brew -
 # Setup for the bash-git-prompt
 echo "GIT_PROMPT_ONLY_IN_REPO=1" >> ${HOME}/.bashrc
 echo "source ${HOME}/.bash-git-prompt/gitprompt.sh" >> ${HOME}/.bashrc
+# Setup for cargo.
+echo "source ${HOME}/.cargo/env" >> ${HOME}/.bashrc
 # Setup for both login and non-login sessions.
 printf "%s\n" "if [ -f $HOME/.bashrc ]; then" "  source $HOME/.bashrc" "fi" >> ${HOME}/.bash_profile
 
