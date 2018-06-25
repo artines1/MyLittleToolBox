@@ -33,12 +33,13 @@ echo "Creating bashrc and bash_profile ..."
 # Setup the alias
 echo "alias ls='ls -FG'" >> ${HOME}/.bashrc
 # Setup the PATH.
+TEMP_PATH="\$PATH\n"
 echo "export PATH=" >> ${HOME}/.bashrc
 for dir in "${PATH_DIRS[@]}"
 do
-  echo ${PWD}/$dir: >> ${HOME}/.bashrc
+  TEMP_PATH="${PWD}/$dir:${TEMP_PATH}"
 done
-echo "\$PATH\n" >> ${HOME}/.bashrc
+echo $TEMP_PATH >> ${HOME}/.bashrc
 # Setup for the bash completion.
 printf "%s\n" "if [ -f `brew --prefix`/etc/bash_completion ]; then" "  . `brew --prefix`/etc/bash_completion" "fi" >> ${HOME}/.bashrc
 # Setup for the bash-git-prompt
