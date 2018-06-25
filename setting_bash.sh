@@ -16,18 +16,11 @@ brew install git
 echo "Installing bash completion ..."
 brew install bash-completion
 
-echo "Installing git cinnabar ..."
-if [ ! -d "$TOOLS_PATH" ]; then
-  mkdir $TOOLS_PATH
-fi
-git clone https://github.com/glandium/git-cinnabar.git "$TOOLS_PATH/git-cinnabar"
-git --git-dir="$TOOLS_PATH/git-cinnabar" submodule update --init --recursive
+echo "Installing pip ..."
+sudo easy_install pip
 
 echo "Install the requests module for git cinnabar..."
-pip install requests
-
-echo "Download the git cinnabar helper ..."
-git cinnabar download
+sudo -H pip install requests
 
 echo "Installing the bash-git-prompt"
 git clone https://github.com/magicmonty/bash-git-prompt.git ${HOME}/.bash-git-prompt --depth=1

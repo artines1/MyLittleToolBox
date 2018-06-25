@@ -24,4 +24,6 @@ git config --global color.diff.whitespace "red reverse"
 echo "Installing the Stacked Git ..."
 brew install stgit
 
+echo "Download the git cinnabar helper ..."
+git cinnabar download
 
