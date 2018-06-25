@@ -7,6 +7,9 @@ TOOLS_PATH="$HOME/Tools"
 echo "Installing homebrew ..."
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
+echo "Installing macvim ..."
+brew install macvim --with-override-system-vim
+
 echo "Installing Git ..."
 brew install git
 
