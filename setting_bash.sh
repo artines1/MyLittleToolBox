@@ -70,21 +70,26 @@ createBashrc ()
   echo "export PATH=${TEMP_PATH}" >> ${HOME}/.bashrc
   # Setup for the bash completion.
   printf "%s\n" "if [ -f `brew --prefix`/etc/bash_completion ]; then" "  . `brew --prefix`/etc/bash_completion" "fi" >> ${HOME}/.bashrc
+  echo "\n" >> ${HOME}/.bashrc
   # Setup for the git completion.
   printf "%s\n" "if [ -f `brew --prefix stgit`/share/stgit/completion/stgit-completion.bash ]; then" "  . `brew --prefix`/share/stgit/completion/stgit-completion.bash" "fi" >> ${HOME}/.bashrc
+  echo "\n" >> ${HOME}/.bashrc
   # Setup for the bash-git-prompt
   echo "GIT_PROMPT_ONLY_IN_REPO=1" >> ${HOME}/.bashrc
   echo "source ${HOME}/.bash-git-prompt/gitprompt.sh" >> ${HOME}/.bashrc
   # Setup for cargo.
   echo "source ${HOME}/.cargo/env" >> ${HOME}/.bashrc
+  echo "\n" >> ${HOME}/.bashrc
 
   # Add ssh keys
+  echo "# Add ssh key" >> ${HOME}/.bashrc
   echo "for key in \$HOME/.ssh/*" >> ${HOME}/.bashrc
   echo "do" >> ${HOME}/.bashrc
   echo "if [ -f \${key}.pub ]; then" >> ${HOME}/.bashrc
   echo "  /usr/bin/ssh-add -K \$key > /dev/null 2>&1" >> ${HOME}/.bashrc
   echo "fi" >> ${HOME}/.bashrc
   echo "done" >> ${HOME}/.bashrc
+  echo "\n" >> ${HOME}/.bashrc
 }
 
 createBashProfile ()
