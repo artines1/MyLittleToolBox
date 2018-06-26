@@ -77,6 +77,14 @@ createBashrc ()
   echo "source ${HOME}/.bash-git-prompt/gitprompt.sh" >> ${HOME}/.bashrc
   # Setup for cargo.
   echo "source ${HOME}/.cargo/env" >> ${HOME}/.bashrc
+
+  # Add ssh keys
+  echo "for key in \$HOME/.ssh/*" >> ${HOME}/.bashrc
+  echo "do" >> ${HOME}/.bashrc
+  echo "if [ -f \${key}.pub ]; then" >> ${HOME}/.bashrc
+  echo "  /usr/bin/ssh-add -K \$key > /dev/null 2>&1" >> ${HOME}/.bashrc
+  echo "fi" >> ${HOME}/.bashrc
+  echo "done" >> ${HOME}/.bashrc
 }
 
 createBashProfile ()
