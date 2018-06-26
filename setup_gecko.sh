@@ -14,6 +14,8 @@ if [ -d "$GECKO_PATH" ]; then
   exit 0
 fi
 
+arc install-certificate
+
 echo "Starting initalizing gecko-dev"
 
 git init "$GECKO_PATH"

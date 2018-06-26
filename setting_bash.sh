@@ -3,6 +3,7 @@
 # Folders for adding into PATH
 PATH_DIRS=("git-cinnabar" "diff-so-fancy")
 TOOLS_PATH="$HOME/Tools"
+PHABRICATOR_PATH="${TOOLS_PATH}/Phabricator"
 
 echo "Installing homebrew ..."
 if hash brew; then
@@ -37,6 +38,15 @@ fi
 echo "Install the requests module for git cinnabar..."
 sudo -H pip install requests
 
+echo "Install Phabricator ..."
+if [ -d "${PHABRICATOR_PATH}" ]; then
+  echo "Phabricator has been installed ..."
+else
+  mkdir ${PHABRICATOR_PATH}
+  git clone https://github.com/phacility/libphutil.git "${PHABRICATOR_PATH}/libphutil"
+  git clone https://github.com/mozilla-conduit/arcanist.git "${PHABRICATOR_PATH}/arcanist"
+fi
+
 echo "Installing the bash-git-prompt"
 if [ -d "${HOME}/.bash-git-prompt" ]; then
   echo "The bash-git-prompt has been installed ..."
@@ -55,6 +65,8 @@ createBashrc ()
   do
     TEMP_PATH="${PWD}/$dir:${TEMP_PATH}"
   done
+  # Add the path for phabricator
+  TEMP_PATH="${PHABRICATOR_PATH}/arcanist/bin:${TEMP_PATH}"
   echo "export PATH=${TEMP_PATH}" >> ${HOME}/.bashrc
   # Setup for the bash completion.
   printf "%s\n" "if [ -f `brew --prefix`/etc/bash_completion ]; then" "  . `brew --prefix`/etc/bash_completion" "fi" >> ${HOME}/.bashrc
