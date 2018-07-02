@@ -90,6 +90,10 @@ createBashrc ()
   echo "fi" >> ${HOME}/.bashrc
   echo "done" >> ${HOME}/.bashrc
   echo "\n" >> ${HOME}/.bashrc
+
+  # Setup the default editor
+  echo "export EDITOR='vim'" >> ${HOME}/.bashrc
+  echo "\n" >> ${HOME}/.bashrc
 }
 
 createBashProfile ()
