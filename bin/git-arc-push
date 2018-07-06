@@ -1,0 +1,23 @@
+#!/bin/sh
+
+BRANCH_REF=$(git symbolic-ref -q HEAD)
+UPSTREAM_BRANCH=$(git for-each-ref --format='%(upstream:short)' ${BRANCH_REF})
+TARGET_BRANCH=$1
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+if [ -n "${TARGET_BRANCH}" ]; then
+  echo "Found a target branch ... ${TARGET_BRANCH}"
+  echo "${TARGET_BRANCH}"
+elif [ -n "${UPSTREAM_BRANCH}" ]; then
+  echo "Found an upstream branch ... ${UPSTREAM_BRANCH}"
+  TARGET_BRANCH="${UPSTREAM_BRANCH}"
+else
+  echo "Please ether give a target brance or setup the upstream branch ..."
+  exit 0
+fi
+
+for commit in $(git rev-list --reverse ${TARGET_BRANCH}..HEAD);
+do
+  git reset --hard ${commit} >/dev/null 2>&1
+  arc diff
+done

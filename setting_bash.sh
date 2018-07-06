@@ -67,6 +67,8 @@ createBashrc ()
   done
   # Add the path for phabricator
   TEMP_PATH="${PHABRICATOR_PATH}/arcanist/bin:${TEMP_PATH}"
+  # Add the path for my own libaray
+  TEMP_PATH="${PWD}/bin:${TEMP_PATH}"
   echo "export PATH=${TEMP_PATH}" >> ${HOME}/.bashrc
   # Setup for the bash completion.
   printf "%s\n" "if [ -f `brew --prefix`/etc/bash_completion ]; then" "  . `brew --prefix`/etc/bash_completion" "fi" >> ${HOME}/.bashrc
